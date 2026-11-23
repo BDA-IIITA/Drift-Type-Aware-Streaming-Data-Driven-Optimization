@@ -1,0 +1,7 @@
+name: ramp_flexibility
+description: A steep evening net-load ramp rewards advance conventional ramping and battery charging.
+asset_overrides: {conventional_ramp_up_mw_per_interval: 5.0}
+initial_state: {hydro_remaining_mwh: 0.0, battery_soc_mwh: 8.0, conventional_output_mw: 10.0}
+demand_mw: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 22, 24, 28, 34, 40, 46, 50, 52, 50, 46, 40, 34, 28, 24]
+solar_available_mw: [0, 0, 0, 0, 0, 1, 2, 4, 6, 8, 10, 12, 12, 10, 8, 5, 2, 0, 0, 0, 0, 0, 0, 0]
+wind_available_mw: [8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8]

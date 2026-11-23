@@ -1,0 +1,7 @@
+name: hydro_conservation
+description: Hydro is cheap but scarce; conserve it for the later peak.
+initial_state: {hydro_remaining_mwh: 24.0, battery_soc_mwh: 15.0, conventional_output_mw: 0.0}
+demand_mw: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 38, 42, 44, 42, 36, 28, 22]
+solar_available_mw: [0, 0, 0, 0, 0, 1, 3, 6, 9, 11, 12, 12, 12, 11, 9, 6, 3, 1, 0, 0, 0, 0, 0, 0]
+wind_available_mw: [14, 14, 14, 14, 14, 13, 12, 10, 8, 7, 6, 5, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14]
+conventional_costs_eur_mwh: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 500, 500, 500, 500, 500, 500, 500]

@@ -1,0 +1,6 @@
+name: renewable_shortage
+description: Demand exceeds conventional plus emergency capability in selected intervals; VOLL makes shortage visible.
+initial_state: {hydro_remaining_mwh: 24.0, battery_soc_mwh: 15.0, conventional_output_mw: 0.0}
+demand_mw: [20, 22, 24, 26, 28, 30, 32, 34, 36, 42, 48, 55, 62, 75, 92, 105, 118, 115, 100, 82, 65, 50, 38, 28]
+solar_available_mw: [0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 6, 6, 5, 4, 2, 1, 0, 0, 0, 0, 0, 0, 0]
+wind_available_mw: [4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 4]

@@ -1,0 +1,39 @@
+currency: EUR
+horizon_hours: 24
+terminal_soc_policy: preserve_initial
+simulated_resources: true
+battery_charging_policy: renewable_only
+allow_hydro_battery_charging: true
+notes:
+  - Illustrative representative grid for independent optimizer tests; not scaled to DE-LU national demand.
+  - Solar and wind availability in the demonstration scenarios is simulated.
+  - Costs are configurable marginal costs in EUR/MWh; startup and commitment costs are not modeled.
+  - Default positive throughput cost, curtailable renewables, and zero must-run output make the LP relaxation exclude simultaneous charge/discharge; binary mode constraints are activated if must-run output is configured or throughput cost is zero.
+assets:
+  interval_hours: 1.0
+  solar: {capacity_mw: 12.0, marginal_cost_eur_mwh: 10.0}
+  wind: {capacity_mw: 16.0, marginal_cost_eur_mwh: 10.0}
+  hydro:
+    capacity_mw: 14.0
+    marginal_cost_eur_mwh: 22.0
+    initial_energy_budget_mwh: 120.0
+    reservoir_capacity_mwh: 120.0
+    minimum_storage_mwh: 0.0
+  conventional:
+    capacity_mw: 55.0
+    marginal_cost_eur_mwh: 95.0
+    conventional_min_output_mw: 0.0
+  emergency_grid: {capacity_mw: 25.0, marginal_cost_eur_mwh: 450.0}
+  conventional_ramp_up_mw_per_interval: 15.0
+  conventional_ramp_down_mw_per_interval: 15.0
+  value_of_lost_load_eur_mwh: 10000.0
+  battery:
+    energy_capacity_mwh: 30.0
+    min_soc_mwh: 3.0
+    max_soc_mwh: 27.0
+    initial_soc_mwh: 15.0
+    charge_limit_mw: 8.0
+    discharge_limit_mw: 8.0
+    charge_efficiency: 0.95
+    discharge_efficiency: 0.95
+    degradation_cost_eur_mwh: 2.0

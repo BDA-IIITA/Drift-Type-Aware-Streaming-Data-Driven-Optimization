@@ -1,0 +1,8 @@
+name: griddrift
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -e .[data,forecasting,drift,optimization,dashboard,dev]

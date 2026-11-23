@@ -1,0 +1,49 @@
+# All capacities are MW, battery/hydro energy quantities are MWh, and costs are EUR/MWh.
+# Solar and wind time series created in Phase 1 are explicitly simulated, not ENTSO-E data.
+currency: EUR
+data:
+  bidding_zone: DE-LU
+  start_date: "2021-01-01"
+  end_date: "2024-12-31"
+  timezone: UTC
+  resolution: 1h
+  demand_timestamp_column: timestamp
+  demand_value_column: demand_mw
+drift:
+  # ADWIN consumes only errors for forecasts issued exactly 24 hours earlier.
+  delta: 0.002
+  clock: 32
+  min_window_length: 5
+  retraining_window_days: 60
+  cooldown_days: 7
+  min_error_increase_mw: 250.0
+  min_error_increase_fraction: 0.10
+  validation_days: 7
+  min_validation_improvement_fraction: 0.02
+  fine_tune_epochs: 5
+assets:
+  interval_hours: 1.0
+  solar: {capacity_mw: 12.0, marginal_cost_eur_mwh: 10.0}
+  wind: {capacity_mw: 16.0, marginal_cost_eur_mwh: 10.0}
+  hydro:
+    capacity_mw: 14.0
+    marginal_cost_eur_mwh: 22.0
+    initial_energy_budget_mwh: 336.0
+    reservoir_capacity_mwh: 336.0
+  conventional: {capacity_mw: 55.0, marginal_cost_eur_mwh: 95.0}
+  emergency_grid: {capacity_mw: 25.0, marginal_cost_eur_mwh: 450.0}
+  conventional_ramp_up_mw_per_interval: 15.0
+  conventional_ramp_down_mw_per_interval: 15.0
+  value_of_lost_load_eur_mwh: 10000.0
+  battery:
+    energy_capacity_mwh: 30.0
+    min_soc_mwh: 3.0
+    max_soc_mwh: 27.0
+    initial_soc_mwh: 15.0
+    charge_limit_mw: 8.0
+    discharge_limit_mw: 8.0
+    charge_efficiency: 0.95
+    discharge_efficiency: 0.95
+    degradation_cost_eur_mwh: 2.0
+battery_charging_policy: renewable_only
+allow_hydro_battery_charging: false

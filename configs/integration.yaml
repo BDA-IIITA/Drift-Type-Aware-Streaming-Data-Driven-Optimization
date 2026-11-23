@@ -1,0 +1,31 @@
+# Integrated replay assumptions. Demand remains in original MW for forecast scoring;
+# representative_grid_scale is applied only at the dispatch boundary.
+renewable_data_mode: entsoe_pecd
+# Illustrative operating rates in EUR/MWh for successive four-hour UTC blocks.
+solar_cost_blocks_eur_mwh: [8, 9, 12, 14, 11, 8]
+wind_cost_blocks_eur_mwh: [12, 11, 10, 9, 11, 13]
+# Peak/off-peak conventional generation rates for the same four-hour UTC blocks
+# (00-04, 04-08, 08-12, 12-16, 16-20, 20-24 UTC; German local time is UTC+1 in
+# winter, UTC+2 in summer): night trough, morning ramp, morning peak, midday,
+# evening peak, late evening. They average 95 EUR/MWh, the flat marginal cost in
+# assets.yaml, so only the daily shape changes. Illustrative assumptions, not
+# ENTSO-E or exchange prices. Remove this key to use the flat assets.yaml rate.
+conventional_cost_blocks_eur_mwh: [70, 90, 115, 100, 120, 75]
+# Hydro rates for the same blocks, shaped like a water value that follows the
+# daily price pattern (cheapest at night, highest at the evening peak). They
+# average 22 EUR/MWh, the flat hydro rate in assets.yaml, and stay below the
+# conventional rate in every block. Illustrative assumptions; remove the key to
+# use the flat assets.yaml rate.
+hydro_cost_blocks_eur_mwh: [16, 20, 26, 22, 28, 20]
+representative_grid_scale: 0.001
+# When PECD day-ahead forecasts have no publication timestamps, assume a target
+# day's forecast is available at 00:00 UTC on the previous day. This is a
+# transparent replay assumption, not source-verified publication metadata.
+renewable_forecast_issue_policy: previous_day_00_utc_assumption
+resource_seed: 42
+resource_scenario: normal
+forecasting_policy: static
+battery_charging_policy: renewable_only
+allow_hydro_battery_charging: true
+terminal_soc_policy: preserve_initial
+replay_speed_seconds_per_hour: 2.0
